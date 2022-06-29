@@ -28,12 +28,10 @@ defusedxml==0.7.1
 entrypoints==0.3
 et-xmlfile==1.1.0
 fbchat==1.9.7
-Fiona @ file:///C:/Fiona-1.8.13-cp38-cp38-win_amd64.whl
 flatbuffers==2.0
 folium==0.12.1.post1
 fonttools==4.28.2
 gast==0.5.3
-GDAL @ file:///C:/GDAL-3.0.4-cp38-cp38-win_amd64.whl
 geopandas==0.10.2
 google-auth==2.6.6
 google-auth-oauthlib==0.4.6
