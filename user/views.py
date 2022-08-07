@@ -23,18 +23,20 @@ def login(request):
         if user is not None:
             login(request, user)   # user
             return redirect('home:index')
-    return redirect('home:index')
+    return render(request, "home/login.html")
 
 def create_account(request):
     if  request.user.is_authenticated:
         return redirect('home:index')
     form_user = FormUser()
     form_profile = FormUserProfileInfo()
+    result_signup=""
     if request.method == "POST":
         form_user = FormUser(request.POST)
-        form_profile = FormUserProfileInfo(request.POST, request.FILES)
-        if form_user.is_valid() and form_profile.is_valid():
+        if form_user.is_valid():
+            print("haha")
             if form_user.cleaned_data['password'] == form_user.cleaned_data['confirm_password']:
+                
                 user = form_user.save()
                 user.set_password(user.password)
                 user.save()
@@ -42,7 +44,15 @@ def create_account(request):
                 profile = form_profile.save(commit=False)
                 profile.user = user
                 profile.save()
-    return redirect('home:index')
+                
+                return redirect("home:index")
+                
+    return render(request, "home/login.html",{
+        'form_user': form_user,
+        'form_profile': form_profile,
+        'result_signup': result_signup,
+    })
+
         
 def logout(request):
     if  request.user.is_authenticated:

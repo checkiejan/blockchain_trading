@@ -7,10 +7,12 @@ class FormUser(forms.ModelForm):
     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={
         "class": "form-control", 
         "placeholder": "Username",
+        "id": "form3Example1c",
     }))
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={
         "class": "form-control", 
         "placeholder": "Email",
+        "id": "form3Example3c",
     }))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={
         "class": "form-control", 
