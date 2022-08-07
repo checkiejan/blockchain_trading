@@ -26,14 +26,28 @@ def login(request):
     return redirect('home:index')
 
 def create_account(request):
-    pass
-        
+    if  request.user.is_authenticated:
+        return redirect('home:index')
+    form_user = FormUser()
+    form_profile = FormUserProfileInfo()
+    if request.method == "POST":
+        form_user = FormUser(request.POST)
+        form_profile = FormUserProfileInfo(request.POST, request.FILES)
+        if form_user.is_valid() and form_profile.is_valid():
+            if form_user.cleaned_data['password'] == form_user.cleaned_data['confirm_password']:
+                user = form_user.save()
+                user.set_password(user.password)
+                user.save()
+
+                profile = form_profile.save(commit=False)
+                profile.user = user
+                profile.save()
+    return redirect('home:index')
         
 def logout(request):
     if  request.user.is_authenticated:
         return redirect('home:index')
-    # form_user = FormUser()
-    # form_profile = FormUserProfileInfo()
+
     logout(request)
     return redirect('home:index')
     
