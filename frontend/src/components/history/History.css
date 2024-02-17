@@ -1,0 +1,14 @@
+/*
+filename: History.css
+Author: Gia Hung Tran
+StudentId: 103509199
+last date modified: 15/10/2023
+*/
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Full height of the viewport */
+    margin: 0;      /* Removing default body margin */
+    color: white;
+}

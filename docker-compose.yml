@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"  # Expose the MySQL port
+    volumes:
+      - ./sql-scripts/create_database.sql:/docker-entrypoint-initdb.d/1.sql
+  backend:
+    image: tuandoan1411/backend-project:latest
+    ports:
+      - "8000:8000"  # Expose the backend port
+    depends_on:
+      - db
+
+  frontend:
+    image: tuandoan1411/frontend-project:latest
+    ports:
+      - "3000:3000"  # Expose the frontend port
+    depends_on:
+      - backend
