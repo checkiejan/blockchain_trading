@@ -1,4 +1,4 @@
-# Blockchain Trading
+# Blockchain Trading Platform
 
 ## Description
 This web app leverages blockchain technology to offer a decentralized platform for trading digital assets, facilitating peer-to-peer transactions without intermediaries. It features a React.js-based frontend for an intuitive user interface and an Express.js backend for efficient server-side operations. Key functionalities include user authentication, asset trading, listings, and transaction history.
